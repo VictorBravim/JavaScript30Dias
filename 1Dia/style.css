@@ -4,25 +4,32 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: black; /* Fundo preto */
+    background-color: rgb(15, 15, 15);
 }
 
 .keys {
+    width: 80%;
     display: flex;
 }
 
 .key {
+    width: 100%;
+    display: flex;
+    border-radius: 10%;
+    flex-direction: column;
     border: 1px solid #333;
     margin: 5px;
     padding: 20px;
-    font-size: 20px;
+    font-size: 40px;
+    color: #fff;
     text-align: center;
-    background-color: rgba(0, 255, 255, 0.5); /* Neon de fundo (cyan translúcido) */
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8); /* Sombra para realçar o neon */
+    background-color: rgba(9, 255, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 255, 85, 0.8); 
 }
 
 .playing {
     animation: keyAnimation 0.1s ease;
+    box-shadow: 0 0 100px rgba(0, 255, 85, 0.8);
 }
 
 @keyframes keyAnimation {
