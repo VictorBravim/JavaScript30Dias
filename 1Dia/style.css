@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black; /* Fundo preto */
+}
+
+.keys {
+    display: flex;
+}
+
+.key {
+    border: 1px solid #333;
+    margin: 5px;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    background-color: rgba(0, 255, 255, 0.5); /* Neon de fundo (cyan translúcido) */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8); /* Sombra para realçar o neon */
+}
+
+.playing {
+    animation: keyAnimation 0.1s ease;
+}
+
+@keyframes keyAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
