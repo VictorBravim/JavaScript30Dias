@@ -9,7 +9,6 @@ $cell.find('.js-expander').click(function() {
     $thisCell.removeClass('is-collapsed').addClass('is-expanded');
     
     if ($cell.not($thisCell).hasClass('is-inactive')) {
-      //do nothing
     } else {
       $cell.not($thisCell).addClass('is-inactive');
     }
@@ -20,7 +19,6 @@ $cell.find('.js-expander').click(function() {
   }
 });
 
-//close card when click on cross
 $cell.find('.js-collapser').click(function() {
 
   var $thisCell = $(this).closest('.card');
