@@ -1,10 +1,19 @@
 :root {
-    --base: #ffc600;
+    --base: #ff0024;
     --spacing: 10px;
     --blur: 10px;
 }
 
+::-webkit-scrollbar {
+    width: 0;
+}
+
 body {
+    background: #131313;
+    color: white;
+    font-family: 'helvetica neue', sans-serif;
+    font-weight: 100;
+    font-size: 50px;
     text-align: center;
 }
 
@@ -12,32 +21,24 @@ img {
     padding: var(--spacing);
     background: var(--base);
     -webkit-filter: blur(var(--blur));
-    /* 👴 */
     filter: blur(var(--blur));
 }
 
-.hl {
-    color: var(--base);
-}
-
-/*
-          misc styles, nothing to do with CSS variables
-        */
-
-body {
-    background: #193549;
-    color: white;
-    font-family: 'helvetica neue', sans-serif;
-    font-weight: 100;
-    font-size: 50px;
-}
-
 .controls {
+    margin-top: 50px;
     margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.controls label {
+    margin-bottom: 2%px;
 }
 
 a {
-    color: var(--base);
+    color: #ff0024;
     text-decoration: none;
 }
 
