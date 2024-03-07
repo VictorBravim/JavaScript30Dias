@@ -1,11 +1,16 @@
 body {
-    margin: 25px;
-    text-align: center;
-    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    background-image: url(https://4kwallpapers.com/images/wallpapers/blue-background-abstract-background-windows-11-3440x1440-8846.jpg);
+    background-size: cover;
 }
 
 h1 {
-    color: #26abde;
+    color: #ffffff;
 }
 
 .virtual-keyboard .row {
@@ -14,16 +19,24 @@ h1 {
 }
 
 .virtual-keyboard .row.spacebar input {
-    padding: 10px 150px;
+    padding: 20px 250px;
 }
 
 .virtual-keyboard input[type='button'] {
-    padding: 10px 20px;
-    border-radius: 30px;
-    border: 3px solid #202c2b;
-    background: #13ab9e;
-    color: #fff;
+    padding: 18px 33px;
+    border-radius: 10px;
+    border: 2px solid #808080;
+    background: #ffffff;
+    color: #000000;
     text-transform: uppercase;
+    font-size: 1.5em;
+    box-shadow: 0px 33px 20px 21px rgba(0, 0, 0, 0.1);
+    transition: 0.5s ease;
+}
+
+.virtual-keyboard input[type='button']:hover {
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
 }
 
 .virtual-keyboard input[type='button'].shift-activated {
@@ -41,11 +54,11 @@ h1 {
 
 .output input {
     color: white;
-    background: black;
+    background: none;
     border: 0px;
     line-height: 2.2em;
     text-align: center;
-    font-size: 2em;
+    font-size: 3em;
     width: 100%;
 }
 
