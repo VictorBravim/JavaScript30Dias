@@ -1,33 +1,61 @@
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
+    margin: 25px;
+    text-align: center;
+    background: #000;
 }
 
-#keyboard {
-    display: grid;
-    grid-template-columns: repeat(14, 1fr);
-    gap: 5px;
-    margin-bottom: 20px;
+h1 {
+    color: #26abde;
 }
 
-.key {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    cursor: pointer;
+.virtual-keyboard .row {
+    text-align: center;
+    margin: 0 0 15px;
 }
 
-#textarea {
-    width: 300px;
-    height: 150px;
-    resize: none;
+.virtual-keyboard .row.spacebar input {
+    padding: 10px 150px;
+}
+
+.virtual-keyboard input[type='button'] {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 3px solid #202c2b;
+    background: #13ab9e;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.virtual-keyboard input[type='button'].shift-activated {
+    background: red;
+}
+
+.virtual-keyboard input[type='button'].delete,
+.virtual-keyboard input[type='button'].shift {
+    text-transform: none;
+}
+
+.output {
+    margin: 15px;
+}
+
+.output input {
+    color: white;
+    background: black;
+    border: 0px;
+    line-height: 2.2em;
+    text-align: center;
+    font-size: 2em;
+    width: 100%;
+}
+
+.output input:focus {
+    outline: none;
+    border: 0px;
+}
+
+.output ::-webkit-input-placeholder {
+    color: white;
+    text-align: center;
+    font-size: 1em;
 }

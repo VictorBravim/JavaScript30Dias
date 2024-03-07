@@ -1,41 +1,65 @@
-const keyboard = document.getElementById('keyboard');
-const textarea = document.getElementById('textarea');
+var $keyboardWrapper = $('.virtual-keyboard'),
+    $key = $keyboardWrapper.find("input"),
+    $key_delete = $('.delete'),
+    $key_shift = $('.shift'),
+    $outputField = $('.output input'),
+    $currentValue = $outputField.val(),
+    actionKeys = $(".delete,.shift")
+activeShiftClass = "shift-activated";
 
-const keys = [
-    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
-    ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-    ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ç'],
-    ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.'],
-    ['Ctrl', 'Space', 'Backspace']
-];
+// handle keystrokes
+function _keystroke(keyCase) {
 
-keys.forEach(row => {
-    const rowElement = document.createElement('div');
-    rowElement.classList.add('keyboard-row');
+    $key.not(actionKeys).on('click', function (e) {
+        e.preventDefault();
 
-    row.forEach(key => {
-        const keyElement = document.createElement('div');
-        keyElement.classList.add('key');
-        keyElement.textContent = key;
-        keyElement.addEventListener('click', () => handleKeyClick(key));
-        rowElement.appendChild(keyElement);
+        // check for shift key for upper
+        if ($key_shift.hasClass(activeShiftClass)) {
+            keyCase = 'upper';
+            $key_shift.removeClass(activeShiftClass);
+        } else {
+            keyCase = 'lower';
+        }
+
+        // handle case
+        if (keyCase == 'upper') {
+            var keyValue = $(this).val().toUpperCase();
+        } else {
+            var keyValue = $(this).val().toLowerCase();
+        }
+
+        // grab current value
+        var output = $('.output input').val();
+        $outputField.val(output + keyValue);
+        getCurrentVal();
+        focusOutputField();
     });
 
-    keyboard.appendChild(rowElement);
+} // keystroke
+
+// delete
+$key_delete.on('click', function (e) {
+    e.preventDefault();
+    $outputField.val($currentValue.substr(0, $currentValue.length - 1));
+    getCurrentVal();
+    focusOutputField();
 });
 
-function handleKeyClick(key) {
-    switch (key) {
-        case 'Backspace':
-            textarea.value = textarea.value.slice(0, -1);
-            break;
-        case 'Space':
-            textarea.value += ' ';
-            break;
-        case 'Enter':
-            textarea.value += '\n';
-            break;
-        default:
-            textarea.value += key;
-    }
+// shift
+$key_shift.on('click', function (e) {
+    e.preventDefault();
+    $(this).toggleClass(activeShiftClass);
+});
+
+// grab current value of typed text
+function getCurrentVal() {
+    $currentValue = $outputField.val();
 }
+
+// focus for cursor hack
+function focusOutputField() {
+    $outputField.focus();
+}
+
+_keystroke("lower"); // init keystrokes
+
