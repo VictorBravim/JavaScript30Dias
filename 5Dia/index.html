@@ -15,69 +15,58 @@
 <body>
     <div class="player">
         <div class="player__current-song">
-          <div class="player__cd">
-            <div class="player__cd-thumb" style="background-image: url('https://f4.bcbits.com/img/a0568269163_16.jpg')"></div>
-          </div>
-          
-          <div id="js-playing-now" class="player__playing-now">
-            <p>Now Playing</p>
-            <h2>Amon The Sign</h2>
-          </div>
-      
-          <div class="player__controls">
-            <div class="player__button btn-repeat">
-              <i class="fas fa-redo"></i>
+            <div class="player__cd">
+                <div class="player__cd-thumb"
+                    style="background-image: url('https://f4.bcbits.com/img/a0568269163_16.jpg')"></div>
             </div>
-            <div class="player__button btn-prev">
-              <i class="fas fa-step-backward"></i>
+            <div id="js-playing-now" class="player__playing-now">
+                <p>Now Playing</p>
+                <h2>Amon The Sign</h2>
             </div>
-            <div class="player__button btn-toggle-play">
-              <i class="fas fa-pause icon-pause"></i>
-              <i class="fas fa-play icon-play"></i>
+            <div class="player__controls">
+                <div class="player__button btn-repeat">
+                    <i class="fas fa-redo"></i>
+                </div>
+                <div class="player__button btn-prev">
+                    <i class="fas fa-step-backward"></i>
+                </div>
+                <div class="player__button btn-toggle-play">
+                    <i class="fas fa-pause icon-pause"></i>
+                    <i class="fas fa-play icon-play"></i>
+                </div>
+                <div class="player__button btn-next">
+                    <i class="fas fa-step-forward"></i>
+                </div>
+                <div class="player__button btn-random">
+                    <i class="fas fa-random"></i>
+                </div>
             </div>
-            <div class="player__button btn-next">
-              <i class="fas fa-step-forward"></i>
+            <div class="player__progress">
+                <div class="player__progress-start-time">0:00</div>
+                <input class="player__progress-bar" type="range" value="0" step="0.00001" min="0" max="100" />
+                <div id="js-duration-song" class="player__progress-end-time">4:05</div>
             </div>
-            <div class="player__button btn-random">
-              <i class="fas fa-random"></i>
-            </div>
-          </div>
-      
-          <div class="player__progress">
-            <div class="player__progress-start-time">0:00</div>
-            <input class="player__progress-bar" 
-                   type="range" 
-                   value="0" 
-                   step="0.00001" 
-                   min="0"
-                   max="100" />
-            <div id="js-duration-song" class="player__progress-end-time">4:05</div>
-          </div>
-          
-      
-          <audio id="js-player-audio" class="player__audio" src="#"></audio>
+            <audio id="js-player-audio" class="player__audio" src="#"></audio>
         </div>
-      
         <div class="player__playlist">
-          <div class="player__song">
-            <div class="player__song-number">1</div>
-            <div class="player__song-infos">
-              <h3 class="player__song-title">Music name</h3>
-              <p class="player__song-author">Singer</p>
+            <div class="player__song">
+                <div class="player__song-number">1</div>
+                <div class="player__song-infos">
+                    <h3 class="player__song-title">Music name</h3>
+                    <p class="player__song-author">Singer</p>
+                </div>
+                <div class="player__song-duration">
+                    Song Duration
+                </div>
             </div>
-            <div class="player__song-duration">
-              Song Duration
-            </div>
-          </div>
         </div>
-        
         <div class="player__band-infos">
-          <div>Amon The Sign</div>
-          <a href="https://amonthesign.bandcamp.com/" target="_blank">Bandcamp</a>
-          <a href="https://www.facebook.com/Amonthesign" target="_blank">Facebook</a>
+            <div>Amon The Sign</div>
+            <a href="https://amonthesign.bandcamp.com/" target="_blank">Bandcamp</a>
+            <a href="https://www.facebook.com/Amonthesign" target="_blank">Facebook</a>
         </div>
-      </div>
-      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script defer src="/5Dia/script.js"></script>
 </body>
 
