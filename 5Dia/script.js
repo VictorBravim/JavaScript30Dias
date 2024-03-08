@@ -1,8 +1,11 @@
+// Definindo variáveis para selecionar elementos do HTML
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
+// Chave de armazenamento no localStorage
 const PLAYER_STORAGE_KEY = "Music_Player_D2D";
 
+// Selecionando elementos do player
 const player = $(".player");
 const cd = $(".player__cd");
 const cdThumb = $(".player__cd-thumb");
@@ -15,68 +18,102 @@ const progress = $(".player__progress-bar");
 const audio = $("#js-player-audio");
 const playList = $(".player__playlist");
 
+// Definindo propriedades do aplicativo
 const app = {
+    // Índice da música atual
     currentIndex: 0,
+    // Array de índices para reprodução aleatória
     indexArray: [],
+    // Contador para reprodução aleatória
     indexSum: 0,
+    // Status de reprodução
     isPlaying: false,
+    // Modo aleatório ativado?
     isRandom: false,
+    // Repetir música ativado?
     isRepeat: false,
 
+    // Lista de músicas
     songs: [
         {
+            // Índice da música
             index: 1,
+            // Nome da música
             name: "Sweet Child O' Mine",
+            // Artista
             singer: "Guns N' Roses",
+            // Duração da música
             duration: "5:56",
+            // URL da imagem da capa
             image: "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
+            // URL da música (substitua por sua URL)
             path: "Your Music"
-          },
-          {
+        },
+        {
+            // Índice da música
             index: 2,
+            // Nome da música
             name: "Smells Like Teen Spirit",
+            // Artista
             singer: "Nirvana",
+            // Duração da música
             duration: "5:01",
+            // URL da imagem da capa
             image: "https://i.scdn.co/image/ab67616d00001e02fbc71c99f9c1296c56dd51b6",
+            // URL da música (substitua por sua URL)
             path: "Your Music"
-          },
-          {
+        },
+        {
+            // Índice da música
             index: 3,
+            // Nome da música
             name: "The Great Gig in the Sky",
+            // Artista
             singer: "Pink Floyd",
+            // Duração da música
             duration: "4:43",
+            // URL da imagem da capa
             image: "https://i.scdn.co/image/ab67616d00001e02ea7caaff71dea1051d49b2fe",
+            // URL da música (substitua por sua URL)
             path: "Your Music"
-          },
+        },
     ],
 
+    // Definindo propriedades dinâmicas
     defineProperties: function () {
+        // Propriedade "currentSong" que retorna a música atual
         Object.defineProperty(this, "currentSong", {
             get: function () {
                 return this.songs[this.currentIndex];
-            }
+            },
         });
     },
 
+    // Renderizando a lista de músicas
     renderSongs: function () {
+        // Criando HTML para cada música
         let htmls = this.songs.map((song, index) => {
             return `
-                 <div class="player__song" data-index=${index}>
-                     <div class="player__song-number">${song.index}</div>
-                     <div class="player__song-infos">
-                         <h3 class="player__song-title">${song.name}</h3>
-                         <p class="player__song-author">${song.singer}</p>
-                     </div>
-                     <div class="player__song-duration">${song.duration}</div>
-                 </div>
-             `;
+        <div class="player__song" data-index=<span class="math-inline">\{index\}\>
+<div class\="player\_\_song\-number"\></span>{song.index}</div>
+          <div class="player__song-infos">
+            <h3 class="player__song-title"><span class="math-inline">\{song\.name\}</h3\>
+<p class\="player\_\_song\-author"\></span>{song.singer}</p>
+          </div>
+          <div class="player__song-duration">${song.duration}</div>
+        </div>
+      `;
         });
+
+        // Inserindo o HTML na playlist
         playList.innerHTML = htmls.join("");
     },
 
+    // Definindo eventos
     handleEvents: function () {
         const _this = this;
 
+        // Ajustando a largura do CD de acordo com o scroll
         const cdWidth = cd.offsetWidth;
         document.onscroll = function () {
             let scrollHeight = window.scrollY || document.documentElement.scrollTop;
@@ -85,6 +122,7 @@ const app = {
             cd.style.opacity = cdNewWidth / cdWidth;
         };
 
+        // Botão de Play/Pause
         playBtn.onclick = function () {
             if (_this.isPlaying) {
                 audio.pause();
@@ -94,6 +132,7 @@ const app = {
             }
         };
 
+        // Eventos de reprodução da música
         audio.onplay = function () {
             _this.isPlaying = true;
             player.classList.add("playing");
