@@ -6,17 +6,22 @@
 }
 
 body {
-    background-color: #313a49;
+    width: 100%;
+    height: 100vh;
+    background-color: #6690b8;
     color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .player {
     position: relative;
-    max-width: 480px;
+    width: 480px;
     margin: 20px auto;
     padding: 40px 0 20px;
     border-radius: 12px;
-    background-color: #181d25;
+    background-color: #000d22;
     box-shadow: 0 19px 38px rgba(24, 29, 37, 0.30), 0 15px 12px rgba(24, 29, 37, 0.22);
 }
 
@@ -38,7 +43,7 @@ body {
     width: 100%;
     max-width: 480px;
     padding: 0 20px 16px;
-    background-color: #181d25;
+    background-color: #000d22;
     box-shadow: 0 19px 38px rgba(24, 29, 37, 0.30), 0 15px 12px rgba(24, 29, 37, 0.22);
 }
 
@@ -60,7 +65,7 @@ body {
     bottom: -3px;
     left: -3px;
     border-radius: 50%;
-    background: linear-gradient(90deg, rgba(104, 70, 231, 1) 0%, rgba(132, 64, 229, 1) 39%);
+    background: linear-gradient(90deg, rgb(12, 0, 53) 0%, #4082e5 39%);
 }
 
 .player .player__cd-thumb {
@@ -103,7 +108,7 @@ body {
 
 .player .player__controls .player__button:hover,
 .player .player__controls .player__button.active {
-    color: #8440e5;
+    color: #4082e5;
 }
 
 .player .player__controls .player__button.btn-toggle-play {
@@ -114,14 +119,14 @@ body {
     height: 56px;
     border-radius: 56px;
     color: #fff;
-    background-color: #8440e5;
+    background-color: #4082e5;
     transition: all 250ms ease;
 }
 
 .player .player__controls .player__button.btn-toggle-play:hover,
 .player .player__controls .player__button.btn-toggle-play:active {
     color: inherit;
-    background-color: #6846e7;
+    background-color: #285296;
     opacity: 0.9;
 }
 
@@ -164,8 +169,8 @@ body {
 
 .player .player__playlist .player__song.active,
 .player .player__playlist .player__song:hover {
-    background-color: #8440e5;
-    background: linear-gradient(90deg, rgba(104, 70, 231, 1) 0%, rgba(132, 64, 229, 1) 39%);
+    background-color: #285296;
+    background: linear-gradient(90deg, rgb(12, 0, 53) 0%, #4082e5 39%);
 }
 
 .player .player__playlist .player__song.active .title,
@@ -191,7 +196,7 @@ body {
     margin-right: 12px;
     border-radius: 50%;
     color: #fff;
-    background-color: #8440e5;
+    background-color: #285296;
     transition: all 250ms ease;
 }
 
@@ -215,28 +220,4 @@ body {
     font-size: 12px;
     color: rgba(255, 255, 255, .6);
     transition: all 250ms ease;
-}
-
-.player .player__band-infos {
-    margin-top: 24px;
-    padding: 20px 20px 0;
-    text-align: center;
-    font-size: 14px;
-    border-top: 1px solid #252733;
-}
-
-.player .player__band-infos div {
-    text-transform: Capitalize;
-    margin-bottom: 12px;
-}
-
-.player .player__band-infos a {
-    margin: 0 4px;
-    text-decoration: none;
-    color: rgba(255, 255, 255, .7);
-    text-transform: uppercase;
-}
-
-.player .player__band-infos a:hover {
-    color: #be9af1;
 }

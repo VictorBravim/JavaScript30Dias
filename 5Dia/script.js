@@ -26,11 +26,27 @@ const app = {
     songs: [
         {
             index: 1,
+            name: "Sweet Child O' Mine",
+            singer: "Guns N' Roses",
+            duration: "5:56",
+            image: "https://i.scdn.co/image/ab67616d00001e0221ebf49b3292c3f0f575f0f5",
+            path: "Your Music"
+          },
+          {
+            index: 2,
             name: "Smells Like Teen Spirit",
             singer: "Nirvana",
             duration: "5:01",
             image: "https://i.scdn.co/image/ab67616d00001e02fbc71c99f9c1296c56dd51b6",
-            path: "https://your-website.com/smells-like-teen-spirit.mp3"
+            path: "Your Music"
+          },
+          {
+            index: 3,
+            name: "The Great Gig in the Sky",
+            singer: "Pink Floyd",
+            duration: "4:43",
+            image: "https://i.scdn.co/image/ab67616d00001e02ea7caaff71dea1051d49b2fe",
+            path: "Your Music"
           },
     ],
 
