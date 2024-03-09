@@ -1,5 +1,5 @@
 // Set the URL for the GitHub API
-const API_URL = 'http://api.github.com/users/';
+const API_URL = 'https://api.github.com/users/';
 
 // Get references to HTML elements
 const form = document.getElementById('form');
