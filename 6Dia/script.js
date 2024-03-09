@@ -1,26 +1,31 @@
-// Set the URL for the GitHub API
+// Defina a URL para a API do GitHub
 const API_URL = 'https://api.github.com/users/';
 
-// Get references to HTML elements
+// Obtenha referências aos elementos HTML
 const form = document.getElementById('form');
 const search = document.getElementById('search');
 const main = document.getElementById('main');
 
-// Function that retrieves user data from the API
+// Função que recupera os dados do usuário da API
 async function getUser(username) {
     try {
+        // Realiza uma chamada assíncrona à API usando axios
         const { data } = await axios(API_URL + username);
+        
+        // Chama a função para criar o card de usuário com os dados obtidos
         createUserCard(data);
+        
+        // Obtém e exibe os repositórios do usuário
         getRepos(username);
     } catch (err) {
-        // If user is not found, create an error card
+        // Se o usuário não for encontrado, cria um card de erro
         if (err.response.status == 404) {
-            createErrorCard('No User found');
+            createErrorCard('Usuário não encontrado');
         }
     }
 }
 
-// Function that creates a card with user information
+// Função que cria um card com informações do usuário
 function createUserCard(user) {
     main.innerHTML = `
     <div class="card">
@@ -29,16 +34,16 @@ function createUserCard(user) {
         <h2 class="load-anim load-anim-text">${user.name}</h2>
         <p class="load-anim load-anim-text">${user.bio}</p>
         <ul>
-          <li class="load-anim load-anim-text">${user.followers} <strong>Followers</strong></li>
-          <li class="load-anim load-anim-text">${user.following} <strong>Following</strong></li>
-          <li class="load-anim load-anim-text">${user.public_repos} <strong>Repos</strong></li>
+          <li class="load-anim load-anim-text">${user.followers} <strong>Seguidores</strong></li>
+          <li class="load-anim load-anim-text">${user.following} <strong>Seguindo</strong></li>
+          <li class="load-anim load-anim-text">${user.public_repos} <strong>Repositórios</strong></li>
         </ul>
         <div id="repos"></div>
       </div>
     </div>`;
 }
 
-// Function that creates an error card
+// Função que cria um card de erro
 function createErrorCard(message) {
     main.innerHTML = `
     <div class="card">
@@ -47,20 +52,25 @@ function createErrorCard(message) {
   `;
 }
 
-// Function that retrieves repository data from the API
+// Função que recupera dados dos repositórios do usuário da API
 async function getRepos(username) {
     try {
+        // Realiza uma chamada assíncrona à API para obter os repositórios
         const { data } = await axios(API_URL + username + '/repos?sort=created');
+        
+        // Adiciona os repositórios ao card do usuário
         addReposToCard(data);
     } catch (err) {
-        createErrorCard('Problem fetching repos');
+        // Em caso de erro, cria um card de erro
+        createErrorCard('Problema ao buscar repositórios');
     }
 }
 
-// Function that adds a user's repositories to their card
+// Função que adiciona os repositórios do usuário ao card
 function addReposToCard(repos) {
     const reposEl = document.getElementById('repos');
 
+    // Exibe os cinco primeiros repositórios do usuário
     repos.slice(0, 5).forEach((repo) => {
         const repoLink = document.createElement('a');
         repoLink.classList.add('repo', 'load-anim', 'load-anim-text');
@@ -68,17 +78,18 @@ function addReposToCard(repos) {
         repoLink.target = '_blank';
         repoLink.innerHTML = repo.name;
 
+        // Adiciona o link do repositório ao elemento HTML
         reposEl.appendChild(repoLink);
     });
 }
 
-// Event listener for when the form is submitted
+// Adiciona um ouvinte de eventos para quando o formulário for enviado
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const user = search.value;
 
-    // If a username was entered, retrieve user data and clear the search field
+    // Se um nome de usuário foi inserido, recupera os dados do usuário e limpa o campo de pesquisa
     if (user) {
         getUser(user);
         search.value = '';
